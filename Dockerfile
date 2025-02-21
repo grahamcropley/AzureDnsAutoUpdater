@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.authors="Graham Cropley <graham.cropley@gmail.com
 
 RUN apt-get update
 RUN apt-get install -y curl bash python3 python3-pip
-RUN apt-get install -y wget libssl-dev libffi-dev python-dev build-essential
+RUN apt-get install -y wget libssl-dev libffi-dev python build-essential
 
 
 RUN mkdir /app
