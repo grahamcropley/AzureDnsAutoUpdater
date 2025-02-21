@@ -1,0 +1,12 @@
+services:
+  azuredns:
+    container_name: azuredns
+    build: https://github.com/grahamcropley/AzureDnsAutoUpdater.git
+    networks:
+      - containers
+    environment:
+      - AZURE_CLIENTID=YOUR_CLIENT_APP_ID
+      - AZURE_CLIENTSECRET=YOUR_CLIENT_APP_SECRET
+      - AZURE_TENANTID=YOUR_AZURE_TENANT_ID
+      - AZURE_RESOURCEGROUP=YOUR_AZURE_RESOURCE_GROUP
+      - AZURE_CNAME=YOUR_CNAME_INCLUDING_DOMAIN_TLD
