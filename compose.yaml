@@ -1,9 +1,13 @@
 services:
   azuredns:
     container_name: azuredns
+    hostname: azuredns
+    restart: unless-stopped
     build: https://github.com/grahamcropley/AzureDnsAutoUpdater.git
     networks:
       - containers
+    volumes:
+      - /var/opt/azuredns:/app
     environment:
       - AZURE_CLIENTID=YOUR_CLIENT_APP_ID
       - AZURE_CLIENTSECRET=YOUR_CLIENT_APP_SECRET
