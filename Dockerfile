@@ -20,4 +20,4 @@ RUN chmod +x /app/update-azuredns.sh
 
 ENV DOCKER_HOST unix:///var/run/docker.sock
 
-ENTRYPOINT ["/usr/local/bin/docker-gen", "-only-published -watch -notify /app/update-azuredns.sh /app/azuredns.tmpl /app/azuredns.zone"]
+ENTRYPOINT ["/usr/local/bin/docker-gen", "-only-published=true -watch -notify=/app/update-azuredns.sh /app/azuredns.tmpl /app/azuredns.zone"]
