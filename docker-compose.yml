@@ -4,6 +4,7 @@ services:
     hostname: azuredns
     restart: unless-stopped
     build: https://github.com/grahamcropley/AzureDnsAutoUpdater.git
+    image: grahamcropley/azurednsautoupdater:latest
     networks:
       - containers
     volumes:
