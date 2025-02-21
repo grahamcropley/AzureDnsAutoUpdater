@@ -9,6 +9,7 @@ services:
       - containers
     volumes:
       - /var/opt/azuredns:/app
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - AZURE_CLIENTID=YOUR_CLIENT_APP_ID
       - AZURE_CLIENTSECRET=YOUR_CLIENT_APP_SECRET
