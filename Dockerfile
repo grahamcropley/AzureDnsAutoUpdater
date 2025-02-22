@@ -8,8 +8,8 @@ RUN apt-get install -y curl bash python3 python3-pip wget libssl-dev libffi-dev 
 RUN mkdir /app
 WORKDIR /app
 
-RUN wget https://github.com/jwilder/docker-gen/releases/download/0.3.3/docker-gen-linux-amd64-0.3.3.tar.gz
-RUN tar xvzf docker-gen-linux-amd64-0.3.3.tar.gz -C /usr/local/bin
+RUN wget https://github.com/nginx-proxy/docker-gen/releases/download/0.14.5/docker-gen-linux-amd64-0.14.5.tar.gz
+RUN tar xvzf docker-gen-linux-amd64-0.14.5.tar.gz -C /usr/local/bin
 
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
