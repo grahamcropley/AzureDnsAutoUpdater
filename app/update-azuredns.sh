@@ -15,7 +15,9 @@ if [ ! -f "$zoneFile" ]; then
 fi
 
 while IFS= read -r domain; do
+  
   if [ ! -z $domain ]; then
+    domain=$domain | xargs echo -n
     echo "Processing: $domain"
     recordSetName=`cut -d "." -f 1 <<< "$domain"`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain"`
