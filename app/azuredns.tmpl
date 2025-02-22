@@ -1,5 +1,2 @@
-{{/* oh shit what is this going to do? */}}
-
 {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
-Here is a {{ $host }}
-{{ end }}
+{{ $host }}{{ end }}
