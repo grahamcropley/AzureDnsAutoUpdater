@@ -35,6 +35,7 @@ fi
 while IFS= read -r domain; do
   
   if [ ! -z $domain ]; then
+    domain=$domain | tr -d '\r' | tr -d '\n'
     printf "${NORMAL}Processing: ${INFO}$domain "
     recordSetName=`cut -d "." -f 1 <<< "$domain" | tr -d '\r' | tr -d '\n'`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain" | tr -d '\r' | tr -d '\n'`
