@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 LABEL org.opencontainers.image.authors="Graham Cropley <graham.cropley@gmail.com>"
 
 RUN apt-get update
-RUN apt-get install -y curl bash python3 python3-pip jq wget libssl-dev libffi-dev build-essential
+RUN apt-get install -y curl bash python3 python3-pip wget libssl-dev libffi-dev build-essential
 
 RUN mkdir /app
 WORKDIR /app
