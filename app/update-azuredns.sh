@@ -6,10 +6,10 @@ tenantId="$AZURE_TENANTID"
 resourceGroup="$AZURE_RESOURCEGROUP"
 zoneFile="azuredns.zone"
 
-INFO=$(tput bold setf 7)
-WARN=$(tput bold setf 3)
-OK=$(tput bold setf 2)
-ERR=$(tput bold setf 1)
+INFO=$(tput bold setaf 7)
+WARN=$(tput bold setaf 3)
+OK=$(tput bold setaf 2)
+ERR=$(tput bold setaf 1)
 NORMAL=$(tput sgr0)
 
 az login --service-principal --tenant $tenantId --username $clientId --password $clientSecret > /dev/null 2>&1
