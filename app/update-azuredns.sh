@@ -13,10 +13,10 @@ ERR=$(tput bold setaf 1)
 NORMAL=$(tput sgr0)
 
 az login --service-principal --tenant $tenantId --username $clientId --password $clientSecret > /dev/null 2>&1
-echo "${NORMAL}Azure CLI Login ${OK}Successul"
+printf "${NORMAL}Azure CLI Login ${OK}Successul\n"
 
 if [ ! -f "$zoneFile" ]; then
-  echo "${ERR}Zone File Does Not Exist${NORMAL}"
+  printf "${ERR}Zone File Does Not Exist${NORMAL}\n"
   exit 1
 fi
 
