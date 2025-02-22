@@ -18,8 +18,8 @@ while IFS= read -r domain; do
   
   if [ ! -z $domain ]; then
     echo "Processing: $domain"
-    recordSetName=`cut -d "." -f 1 <<< "$domain" | xargs echo -n`
-    dnsZoneName=`cut -d "." -f 2- <<< "$domain" | xargs echo -n`
+    recordSetName=`cut -d "." -f 1 <<< "$domain" | tr -d '\r' | tr -d '\n'`
+    dnsZoneName=`cut -d "." -f 2- <<< "$domain" | tr -d '\r' | tr -d '\n'`
     az network dns record-set cname show --resource-group grahamcropley_lab --zone-name $dnsZoneName --name $recordSetName --debug
     if [ $? -ne 0 ]; then
       az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName --debug
