@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/bab367d1
 ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/bab367d16518b5ad199fffcefcd790d2d9ce5e8c/app/azuredns.tmpl /app
 RUN chmod +x /app/update-azuredns.sh
 
-ENV DOCKER_HOST unix:///var/run/docker.sock
+ENV DOCKER_HOST=unix:///var/run/docker.sock
 
 ENTRYPOINT [ \
   "docker-gen", \
