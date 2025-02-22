@@ -1,5 +1,17 @@
 #! /bin/bash
 
+stty -echoctl # hide ^C
+
+# function called by trap
+endnicely() {
+    tput setaf 1
+    printf "\rSIGINT caught      "
+    tput sgr0
+    exit 1
+}
+
+trap 'endnicely' SIGINT
+
 clientId="$AZURE_CLIENTID"
 clientSecret="$AZURE_CLIENTSECRET"
 tenantId="$AZURE_TENANTID"
