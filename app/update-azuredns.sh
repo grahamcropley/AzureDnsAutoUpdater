@@ -23,7 +23,7 @@ fi
 while IFS= read -r domain; do
   
   if [ ! -z $domain ]; then
-    echo "${$NORMAL}Processing: ${INFO}$domain${NORMAL}"
+    echo "${NORMAL}Processing: ${INFO}$domain${NORMAL}"
     recordSetName=`cut -d "." -f 1 <<< "$domain" | tr -d '\r' | tr -d '\n'`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain" | tr -d '\r' | tr -d '\n'`
     az network dns record-set cname show --resource-group $resourceGroup --zone-name $dnsZoneName --name $recordSetName > /dev/null 2>&1
