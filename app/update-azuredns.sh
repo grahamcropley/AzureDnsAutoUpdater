@@ -22,7 +22,7 @@ while IFS= read -r domain; do
     dnsZoneName=`cut -d "." -f 2- <<< "$domain" | xargs echo -n`
     az network dns record-set cname show --resource-group grahamcropley_lab --zone-name $dnsZoneName --name $recordSetName --debug
     if [ $? -ne 0 ]; then
-      az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --debug
+      az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName --debug
       if [ $? -eq 0 ]; then
         echo "CNAME record created successfully for $domain"
       else
