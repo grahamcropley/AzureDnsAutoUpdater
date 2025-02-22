@@ -13,8 +13,8 @@ RUN tar xvzf docker-gen-linux-amd64-0.3.3.tar.gz -C /usr/local/bin
 
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
-ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/bab367d16518b5ad199fffcefcd790d2d9ce5e8c/app/update-azuredns.sh /app/
-ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/bab367d16518b5ad199fffcefcd790d2d9ce5e8c/app/azuredns.tmpl /app/
+ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/refs/heads/main/app/azuredns.tmpl /app/
+ADD https://raw.githubusercontent.com/grahamcropley/AzureDnsAutoUpdater/refs/heads/main/app/update-azuredns.sh /app/
 RUN chmod a+rx /app/update-azuredns.sh
 
 ENV DOCKER_HOST=unix:///var/run/docker.sock
