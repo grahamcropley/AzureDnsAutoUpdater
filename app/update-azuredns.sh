@@ -5,7 +5,7 @@ stty -echoctl # hide ^C
 # function called by trap
 endnicely() {
     tput setaf 1
-    printf "\rSIGINT caught      "
+    printf "\nSIGINT caught\n"
     tput sgr0
     exit 1
 }
