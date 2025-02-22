@@ -25,7 +25,7 @@ ENTRYPOINT [ \
   "docker-gen", \
   "-only-published", \
   "-watch", \
-  "-notify", "/app/update-azuredns.sh", \
+  "-notify", "/bin/bash /app/update-azuredns.sh", \
   "/app/azuredns.tmpl", \
   "/app/azuredns.zone" \
 ]
