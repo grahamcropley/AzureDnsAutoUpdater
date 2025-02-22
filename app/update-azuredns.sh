@@ -1,6 +1,6 @@
 #! /bin/bash
 
-stty -echoctl # hide ^C
+stty -echoctl # hide ^C 2>/dev/null
 
 # function called by trap
 endnicely() {
@@ -18,11 +18,11 @@ tenantId="$AZURE_TENANTID"
 resourceGroup="$AZURE_RESOURCEGROUP"
 zoneFile="azuredns.zone"
 
-INFO=$(tput bold setaf 7)
-WARN=$(tput bold setaf 3)
-OK=$(tput bold setaf 2)
-ERR=$(tput bold setaf 1)
-NORMAL=$(tput sgr0)
+INFO=$(tput bold setaf 7 2>/dev/null)
+WARN=$(tput bold setaf 3 2>/dev/null)
+OK=$(tput bold setaf 2 2>/dev/null)
+ERR=$(tput bold setaf 1 2>/dev/null)
+NORMAL=$(tput sgr0 2>/dev/null)
 
 az login --service-principal --tenant $tenantId --username $clientId --password $clientSecret > /dev/null 2>&1
 printf "${NORMAL}Azure CLI Login ${OK}Successul\n"
