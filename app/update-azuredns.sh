@@ -42,12 +42,12 @@ while IFS= read -r domain; do
     if [ $? -ne 0 ]; then
       result=`az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName > /dev/null 2>&1`
       if [ $? -eq 0 ]; then
-        printf "${NORMAL}CNAME ${OK}created${NORMAL}\n"
+        printf "${NORMAL} ${OK}created${NORMAL}\n"
       else
-        printf "${NORMAL}CNAME ${ERR}failed${NORMAL}\n"
+        printf "${NORMAL} ${ERR}failed${NORMAL}\n"
       fi
     else
-      printf "${NORMAL}CNAME ${WARN}already exists${NORMAL}\n"
+      printf "${NORMAL} ${WARN}already exists${NORMAL}\n"
     fi
   fi
 done < "$zoneFile"
