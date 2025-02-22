@@ -6,7 +6,7 @@ tenantId="$AZURE_TENANTID"
 resourceGroup="$AZURE_RESOURCEGROUP"
 zoneFile="azuredns.zone"
 
-az login --service-principal --tenant $tenantId --username $clientId --password $clientSecret --debug
+az login --service-principal --tenant $tenantId --username $clientId --password $clientSecret
 echo "Azure CLI Login Complete"
 
 if [ ! -f "$zoneFile" ]; then
@@ -20,9 +20,9 @@ while IFS= read -r domain; do
     echo "Processing: $domain"
     recordSetName=`cut -d "." -f 1 <<< "$domain" | tr -d '\r' | tr -d '\n'`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain" | tr -d '\r' | tr -d '\n'`
-    az network dns record-set cname show --resource-group grahamcropley_lab --zone-name $dnsZoneName --name $recordSetName --debug
+    az network dns record-set cname show --resource-group grahamcropley_lab --zone-name $dnsZoneName --name $recordSetName
     if [ $? -ne 0 ]; then
-      az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName --debug
+      az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName
       if [ $? -eq 0 ]; then
         echo "CNAME record created successfully for $domain"
       else
