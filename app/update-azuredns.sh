@@ -20,12 +20,13 @@ while IFS= read -r domain; do
     recordSetName=`cut -d "." -f 1 <<< "$domain"`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain"`
     az network dns record-set cname show --resource-group grahamcropley_lab --zone-name $dnsZoneName --name $recordSetName --debug
-    if [ $? -ne 0]; then
+    if [ $? -ne 0 ]; then
       az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --debug
-      if [ $? -eq 0]; then
+      if [ $? -eq 0 ]; then
         echo "CNAME record created successfully for $domain"
-    else
-      echo "CNAM record already exists for $domain"
+      else
+        echo "CNAM record already exists for $domain"
+      fi
     fi
   fi
 done < "$zoneFile"
