@@ -23,19 +23,19 @@ fi
 while IFS= read -r domain; do
   
   if [ ! -z $domain ]; then
-    echo -n "${NORMAL}Processing: ${INFO}$domain"
+    printf "${NORMAL}Processing: ${INFO}$domain"
     recordSetName=`cut -d "." -f 1 <<< "$domain" | tr -d '\r' | tr -d '\n'`
     dnsZoneName=`cut -d "." -f 2- <<< "$domain" | tr -d '\r' | tr -d '\n'`
     az network dns record-set cname show --resource-group $resourceGroup --zone-name $dnsZoneName --name $recordSetName > /dev/null 2>&1
     if [ $? -ne 0 ]; then
       az network dns record-set cname set-record --resource-group $resourceGroup --zone-name $dnsZoneName --record-set-name $recordSetName --cname $dnsZoneName > /dev/null 2>&1
       if [ $? -eq 0 ]; then
-        echo -ne "${NORMAL} CNAME ${OK}created${NORMAL}\n"
+        printf "${NORMAL} CNAME ${OK}created${NORMAL}\n"
       else
-        echo -ne "${NORMAL} CNAME ${ERR}failed${NORMAL}\n"
+        printf "${NORMAL} CNAME ${ERR}failed${NORMAL}\n"
       fi
     else
-      echo -ne "${NORMAL} CNAME ${WARN}already exists${NORMAL}\n"
+      printf "${NORMAL} CNAME ${WARN}already exists${NORMAL}\n"
     fi
   fi
 done < "$zoneFile"
