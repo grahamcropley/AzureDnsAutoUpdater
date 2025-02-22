@@ -1,3 +1,5 @@
+#! /bin/bash
+
 clientId="$AZURE_CLIENTID"
 clientSecret="$AZURE_CLIENTSECRET"
 tenantId="$AZURE_TENANTID"
